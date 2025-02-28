@@ -21,6 +21,7 @@ export default [
     {
         plugins: {
             prettier: prettierPlugin,
+            react: pluginReact,
         },
         rules: {
             'no-unused-vars': 'error',
