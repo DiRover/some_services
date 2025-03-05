@@ -7,7 +7,7 @@ export const routes: RouteObject[] = [
         children: [
             {
                 index: true,
-                lazy: () => import('../Test.tsx'),
+                lazy: () => import('../greeting/Greeting.tsx'),
             },
         ],
     },

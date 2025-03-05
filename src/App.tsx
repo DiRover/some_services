@@ -3,13 +3,17 @@
  */
 import {memo} from 'react';
 import {Outlet} from 'react-router';
+import AppBackground from './components/view/AppBackground.tsx';
+import AppWrapper from './components/view/AppWrapper.tsx';
 
 export const Component = memo(() => {
     return (
-        <div className="bg-orange-900">
-            <div>Hi</div>
+        <div className="h-screen w-full">
+            <AppBackground />
 
-            <Outlet />
+            <AppWrapper>
+                <Outlet />
+            </AppWrapper>
         </div>
     );
 });

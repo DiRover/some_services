@@ -24,10 +24,11 @@ export default [
             react: pluginReact,
         },
         rules: {
-            'no-unused-vars': 'error',
+            'no-undef': 'error',
             'no-console': 'error',
             'react/display-name': 'off',
             'react/react-in-jsx-scope': 'off',
+            'react/prop-types': 'off',
         },
         settings: {
             react: {
