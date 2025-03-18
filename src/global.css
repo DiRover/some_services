@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+@tailwind utilities;
+
 @theme {
     --color-midnight: #121063;
+}
+
+@utility dialog {
+    @apply rounded-xl border-2 p-8 text-fuchsia-500
 }

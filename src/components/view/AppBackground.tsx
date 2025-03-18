@@ -1,7 +1,8 @@
 /**
  * Created by ROVENSKIY D.A. on 27.02.2025
  */
-import {memo, PropsWithChildren, useEffect, useRef} from 'react';
+import type { PropsWithChildren} from 'react';
+import {memo, useEffect, useRef} from 'react';
 import * as THREE from 'three';
 
 const scene = new THREE.Scene();

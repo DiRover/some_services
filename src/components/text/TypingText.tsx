@@ -1,7 +1,8 @@
 /**
  * Created by ROVENSKIY D.A. on 05.03.2025
  */
-import {HTMLProps, memo, useEffect, useState} from 'react';
+import type {HTMLProps} from 'react';
+import { memo, useEffect, useState} from 'react';
 
 const TypingText = memo<
     {phrase: string} & Pick<HTMLProps<HTMLDivElement>, 'className'>

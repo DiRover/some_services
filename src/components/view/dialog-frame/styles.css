@@ -1,5 +1,3 @@
-@import "tailwindcss";
-
 @keyframes spinning-background {
     0% {
         transform: translate(-50%,-50%) rotate(1turn)
@@ -10,7 +8,7 @@
     }
 }
 
-.dialog-frame {
+.spinning-frame {
     --border-radius: 12px;
     --border-size: 1px;
     --padding: 1px;
@@ -32,7 +30,7 @@
     /*transform: translateZ(0)*/
 }
 
-.dialog-frame i {
+.spinning-frame i {
     content: "";
     position: absolute;
     top: var(--border-size);
@@ -44,10 +42,15 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     z-index: -1;
-    border-radius: calc(var(--border-radius) + var(--border-size))
+    border-radius: calc(var(--border-radius) + var(--border-size));
+    opacity: 0;
 }
 
-.dialog-frame i:before {
+.spinning-frame:hover i {
+    opacity: 1;
+}
+
+.spinning-frame i:before {
     content: "";
     display: block;
     background: var(--border-bg);
@@ -60,5 +63,5 @@
     transform: translate(-50%,-50%);
     border-radius: 100%;
     z-index: -2;
-    animation: spinning-background 5s linear infinite;
+    animation: spinning-background 3s linear infinite;
 }

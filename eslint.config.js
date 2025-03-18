@@ -29,6 +29,7 @@ export default [
             'react/display-name': 'off',
             'react/react-in-jsx-scope': 'off',
             'react/prop-types': 'off',
+            '@typescript-eslint/consistent-type-imports': 'error',
         },
         settings: {
             react: {
@@ -36,4 +37,5 @@ export default [
             },
         },
     },
+    {ignores: ['vite.config.ts']},
 ];

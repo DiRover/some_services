@@ -1,4 +1,4 @@
-import {RouteObject} from 'react-router';
+import type {RouteObject} from 'react-router';
 
 export const routes: RouteObject[] = [
     {
@@ -7,7 +7,12 @@ export const routes: RouteObject[] = [
         children: [
             {
                 index: true,
-                lazy: () => import('../greeting/Greeting.tsx'),
+                lazy: () => import('../entities/greeting/Greeting.tsx'),
+            },
+            {
+                path: '/services-list',
+                lazy: () => import('../entities/services-list/Page.tsx'),
+                children: [],
             },
         ],
     },
