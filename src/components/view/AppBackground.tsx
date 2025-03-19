@@ -1,13 +1,18 @@
 /**
  * Created by ROVENSKIY D.A. on 27.02.2025
  */
-import type { PropsWithChildren} from 'react';
+import type {PropsWithChildren} from 'react';
 import {memo, useEffect, useRef} from 'react';
 import * as THREE from 'three';
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color('#1b022c');
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth / window.innerHeight,
+    0.1,
+    1000,
+);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -16,12 +21,19 @@ const starMaterial = new THREE.PointsMaterial({color: 0xffffff});
 
 const stars = [];
 for (let i = 0; i < 6000; i++) {
-    const star = new THREE.Vector3((Math.random() - 0.5) * 2000, (Math.random() - 0.5) * 2000, Math.random() * -2000);
+    const star = new THREE.Vector3(
+        (Math.random() - 0.5) * 2000,
+        (Math.random() - 0.5) * 2000,
+        Math.random() * -2000,
+    );
     stars.push(star.x, star.y, star.z);
 }
 
 const starVertices = new Float32Array(stars);
-starGeometry.setAttribute('position', new THREE.BufferAttribute(starVertices, 3));
+starGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(starVertices, 3),
+);
 
 const starMesh = new THREE.Points(starGeometry, starMaterial);
 scene.add(starMesh);
