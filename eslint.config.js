@@ -4,6 +4,7 @@ import tsEslint from 'typescript-eslint';
 import pluginReact from 'eslint-plugin-react';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -22,6 +23,7 @@ export default [
         plugins: {
             prettier: prettierPlugin,
             react: pluginReact,
+            '@tanstack/query': pluginQuery,
         },
         rules: {
             'no-undef': 'error',
@@ -30,6 +32,7 @@ export default [
             'react/react-in-jsx-scope': 'off',
             'react/prop-types': 'off',
             '@typescript-eslint/consistent-type-imports': 'error',
+            '@tanstack/query/exhaustive-deps': 'error',
         },
         settings: {
             react: {
