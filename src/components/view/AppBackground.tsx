@@ -67,7 +67,10 @@ const line = new THREE.Line(geometry, material);
 
 scene.add(line);
 
+let isAnimating = false;
+
 function animate() {
+    if (!isAnimating) return;
     requestAnimationFrame(animate);
     const positions = starGeometry.attributes.position.array;
     for (let i = 2; i < positions.length; i += 3) {
@@ -85,13 +88,28 @@ function animate() {
 
 const AppBackground = memo<PropsWithChildren>(({children}) => {
     const container = useRef<HTMLDivElement>(null);
+    const renderRef = useRef<THREE.WebGLRenderer | null>(null);
+    const animationRef = useRef<number | null>(null);
 
     useEffect(() => {
+        if (renderRef.current || animationRef.current) return;
+
+        renderRef.current = renderer;
         container.current?.appendChild(renderer.domElement);
+        animationRef.current = requestAnimationFrame(animate);
+
+        isAnimating = true;
         animate();
 
         return () => {
+            isAnimating = false;
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+                animationRef.current = null;
+            }
             container.current?.removeChild(renderer.domElement);
+            renderRef.current?.dispose();
+            renderRef.current = null;
         };
     }, []);
 
