@@ -5,6 +5,7 @@ import pluginReact from 'eslint-plugin-react';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import pluginQuery from '@tanstack/eslint-plugin-query';
+import tailwindPlugin from 'eslint-plugin-tailwindcss';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -19,11 +20,13 @@ export default [
     ...tsEslint.configs.recommended,
     pluginReact.configs.flat.recommended,
     eslintConfigPrettier,
+    ...tailwindPlugin.configs['flat/recommended'],
     {
         plugins: {
             prettier: prettierPlugin,
             react: pluginReact,
             '@tanstack/query': pluginQuery,
+            tailwindcss: tailwindPlugin,
         },
         rules: {
             'no-undef': 'error',
@@ -37,9 +40,6 @@ export default [
         settings: {
             react: {
                 version: 'detect',
-            },
-            tailwindcss: {
-                whitelist: ['active'],
             },
         },
     },
