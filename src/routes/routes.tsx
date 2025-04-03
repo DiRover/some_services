@@ -1,5 +1,6 @@
 import type {RouteObject} from 'react-router';
 import ErrorPage from '../entities/error/ErrorPage.tsx';
+import {servicesList} from './servicesList.tsx';
 
 export const routes: RouteObject[] = [
     {
@@ -12,10 +13,10 @@ export const routes: RouteObject[] = [
                 lazy: () => import('../entities/greeting/Greeting.tsx'),
             },
             {
-                path: '/services-list',
+                path: 'services-list',
                 lazy: () => import('../entities/services-list/Page.tsx'),
-                children: [],
             },
+            ...servicesList,
         ],
     },
 ];

@@ -11,7 +11,7 @@ const ServiceView = memo<{service: Service}>(({service}) => {
     const {title, link, description} = service;
 
     const onClick = useCallback(() => {
-        navigate(link);
+        navigate(`../${link}`);
     }, []);
 
     return (

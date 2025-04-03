@@ -8,7 +8,7 @@ import pluginQuery from '@tanstack/eslint-plugin-query';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    {files: ['**/*.{js,mjs,cjs,ts,jsx,tsx}']},
+    {files: ['**/*.{ts,tsx}']},
     {
         languageOptions: {
             ecmaVersion: 'latest',
@@ -38,7 +38,10 @@ export default [
             react: {
                 version: 'detect',
             },
+            tailwindcss: {
+                whitelist: ['active'],
+            },
         },
     },
-    {ignores: ['vite.config.ts']},
+    {ignores: ['vite.config.ts', 'global.css']},
 ];

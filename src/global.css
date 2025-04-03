@@ -2,10 +2,37 @@
 
 @tailwind utilities;
 
+html, body, #root {
+    height: 100%;
+}
+
 @theme {
     --color-midnight: #121063;
 }
 
 @utility dialog {
     @apply rounded-xl border-2 p-8 text-fuchsia-500
+}
+
+.ant-table, .ant-table-cell {
+    @apply !bg-transparent text-fuchsia-500;
+}
+
+.ant-table-thead .ant-table-cell,
+.ant-pagination-item-link,
+.ant-pagination-item a
+{
+    @apply !text-fuchsia-500;
+}
+
+.ant-pagination-disabled .ant-pagination-item-link {
+    @apply !text-amber-50;
+}
+
+.ant-pagination-item {
+    @apply !bg-transparent;
+}
+
+.ant-pagination-item-active {
+    @apply !border-fuchsia-500;
 }
