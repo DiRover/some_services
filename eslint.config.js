@@ -6,6 +6,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import prettierPlugin from 'eslint-plugin-prettier';
 import pluginQuery from '@tanstack/eslint-plugin-query';
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
+import perfectionist from 'eslint-plugin-perfectionist';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -20,24 +21,34 @@ export default [
     ...tsEslint.configs.recommended,
     pluginReact.configs.flat.recommended,
     eslintConfigPrettier,
-    ...tailwindPlugin.configs['flat/recommended'],
     {
         plugins: {
+            '@tanstack/query': pluginQuery,
+            perfectionist,
             prettier: prettierPlugin,
             react: pluginReact,
-            '@tanstack/query': pluginQuery,
             tailwindcss: tailwindPlugin,
         },
         rules: {
-            'no-undef': 'error',
-            'no-console': 'error',
-            'react/display-name': 'off',
-            'react/react-in-jsx-scope': 'off',
-            'react/prop-types': 'off',
-            '@typescript-eslint/consistent-type-imports': 'error',
             '@tanstack/query/exhaustive-deps': 'error',
+            '@typescript-eslint/consistent-type-imports': 'error',
+            'no-console': 'error',
+            'no-undef': 'error',
+            'perfectionist/sort-interfaces': ['error'],
+            'perfectionist/sort-objects': [
+                'error',
+                {
+                    type: 'alphabetical',
+                },
+            ],
+            'react/display-name': 'off',
+            'react/prop-types': 'off',
+            'react/react-in-jsx-scope': 'off',
         },
         settings: {
+            perfectionist: {
+                type: 'alphabetical',
+            },
             react: {
                 version: 'detect',
             },

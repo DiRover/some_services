@@ -8,7 +8,7 @@ import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
 
 const ServiceView = memo<{service: Service}>(({service}) => {
     const navigate = useNavigate();
-    const {title, link, description} = service;
+    const {description, link, title} = service;
 
     const onClick = useCallback(() => {
         navigate(`../${link}`);

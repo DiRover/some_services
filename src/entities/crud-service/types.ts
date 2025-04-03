@@ -1,15 +1,15 @@
 export interface User {
-    id: string;
-    country: string;
-    createdAt: string;
-    lastName: string;
-    name: string;
     avatar: string;
     companyName: string;
+    country: string;
+    createdAt: string;
     department: string;
     email: string;
     gender: string;
-    vehicleType: string;
-    phone: string;
+    id: string;
     job: string;
+    lastName: string;
+    name: string;
+    phone: string;
+    vehicleType: string;
 }

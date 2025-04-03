@@ -6,18 +6,18 @@ import { memo, useEffect, useState} from 'react';
 
 const TypingText = memo<
     {phrase: string} & Pick<HTMLProps<HTMLDivElement>, 'className'>
->(({phrase, className}) => {
+>(({className, phrase}) => {
     const [textState, setTextState] = useState<{text: string; index: number}>({
-        text: '',
         index: 0,
+        text: '',
     });
 
     useEffect(() => {
         if (textState.index < phrase.length) {
             const timeout = setTimeout(() => {
                 setTextState(prev => ({
-                    text: prev.text + phrase[textState.index],
                     index: prev.index + 1,
+                    text: prev.text + phrase[textState.index],
                 }));
             }, 40);
 

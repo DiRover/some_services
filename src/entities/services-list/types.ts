@@ -1,5 +1,5 @@
 export interface Service {
-    title: string;
-    link: string;
     description: string;
+    link: string;
+    title: string;
 }
