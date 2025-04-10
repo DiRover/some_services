@@ -15,8 +15,9 @@ const router = createBrowserRouter(routes);
 
 const defaultQueryFn: QueryFunction = async ({queryKey}) => {
     const url = typeof queryKey[0] == 'string' ? queryKey[0] : '';
+    const params = queryKey[1];
 
-    const {data} = await axios.get(url);
+    const {data} = await axios.get(url, {params});
 
     return data;
 };

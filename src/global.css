@@ -15,17 +15,25 @@ html, body, #root {
 }
 
 .ant-table, .ant-table-cell {
-    @apply !bg-transparent text-fuchsia-500;
+    @apply !bg-transparent;
 }
 
 .ant-table-thead .ant-table-cell,
 .ant-pagination-item-link,
-.ant-pagination-item a
-{
+.ant-pagination-item a,
+.ant-table, .ant-table-cell,
+.ant-input, .ant-select-selector,
+.ant-select-arrow, .ant-form-item-label > label {
     @apply !text-fuchsia-500;
 }
 
-.ant-pagination-disabled .ant-pagination-item-link {
+.ant-form-item-label > label {
+    @apply !text-2xl;
+}
+
+.ant-pagination-disabled .ant-pagination-item-link,
+.ant-radio-button-wrapper:hover,
+.ant-radio-button-checked .ant-radio-button-label {
     @apply !text-amber-50;
 }
 
@@ -33,6 +41,43 @@ html, body, #root {
     @apply !bg-transparent;
 }
 
-.ant-pagination-item-active {
+.ant-pagination-item-active,
+.ant-input-group-addon,
+.ant-radio-button-wrapper:first-child:not(.ant-radio-button-wrapper-checked) {
     @apply !border-fuchsia-500;
+}
+
+.ant-input, .ant-select-selector, .ant-radio-button-wrapper-block {
+    @apply !bg-transparent !h-12 !text-2xl border-fuchsia-500;
+}
+
+.ant-select-selector-custom .ant-select-selector {
+    @apply !border-fuchsia-500;
+}
+
+.ant-input-outlined:focus-within,
+.ant-input-outlined:hover,
+.ant-select-selector-custom .ant-select-selector:hover,
+.ant-radio-button-wrapper-checked, .ant-radio-button-checked {
+    @apply !border-amber-50;
+}
+
+.ant-select-arrow {
+    @apply !mt-0.5;
+}
+
+.ant-radio-button-wrapper:not(:first-child)::before {
+    @apply bg-fuchsia-500;
+}
+
+.ant-radio-button-wrapper {
+    @apply text-fuchsia-500;
+}
+
+.ant-radio-button-wrapper-checked .ant-radio-button-label {
+    @apply !text-amber-50;
+}
+
+.ant-radio-button-wrapper-checked:not(:first-child)::before {
+    @apply !bg-amber-50;
 }

@@ -4,19 +4,19 @@ import {servicesList} from './servicesList.tsx';
 
 export const routes: RouteObject[] = [
     {
-        path: '/',
-        lazy: () => import('../App.tsx'),
-        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
                 lazy: () => import('../entities/greeting/Greeting.tsx'),
             },
             {
-                path: 'services-list',
                 lazy: () => import('../entities/services-list/Page.tsx'),
+                path: 'services-list',
             },
             ...servicesList,
         ],
+        errorElement: <ErrorPage />,
+        lazy: () => import('../App.tsx'),
+        path: '/',
     },
 ];
