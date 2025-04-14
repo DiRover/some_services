@@ -2,16 +2,19 @@
  * Created by ROVENSKIY D.A. on 03.04.2025
  */
 import {memo, useEffect, useRef, useState} from 'react';
-import {Button, Table} from 'antd';
+import {Table} from 'antd';
 import {useQuery} from '@tanstack/react-query';
 import type {UserDummyJson, UserResponse} from './types.ts';
 import LoadingIndicator from '@components/LoadingIndicator.tsx';
 import type {ColumnsType} from 'antd/es/table';
-import {useNavigate} from 'react-router';
+import {Link} from 'react-router';
 import {AddressView} from '@components/view/AddressView.tsx';
 import API from '@libs/API.ts';
 import {NO_DATA} from '@libs/constants.ts';
 import type {PaginationParams} from '../../types.ts';
+import {useAtom} from 'jotai';
+import {atomUserList} from '../../atoms/atomUser.ts';
+import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
 
 const columns: ColumnsType<UserDummyJson> = [
     {
@@ -71,13 +74,16 @@ const columns: ColumnsType<UserDummyJson> = [
     },
 ];
 
-const userListPaginationParams: PaginationParams = {limit: 3, skip: 1};
+export const userListPaginationParams: PaginationParams = {limit: 3, skip: 1};
 
 export const Component = memo(() => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const navigate = useNavigate();
+    const [userList, setUserList] = useAtom(atomUserList);
+
+    const isUserListReceived = !!userList.length;
 
     const {data, isLoading} = useQuery<UserResponse>({
+        enabled: !isUserListReceived,
         queryKey: [API.users(), userListPaginationParams],
     });
 
@@ -91,15 +97,26 @@ export const Component = memo(() => {
         }
     }, [data]);
 
+    useEffect(() => {
+        if (!isUserListReceived) {
+            setUserList(data?.users ?? []);
+        }
+    }, [data]);
+
     if (isLoading) return <LoadingIndicator />;
 
     return (
         <div ref={containerRef} className="h-full">
-            <Button onClick={() => navigate('form-user')}>Create</Button>
+            <SpinningFrame className="inline-block">
+                <Link to="form-user" className="text-fuchsia-500">
+                    Add new user
+                </Link>
+            </SpinningFrame>
+
             <Table
                 rowKey="id"
                 columns={columns}
-                dataSource={data?.users}
+                dataSource={userList}
                 scroll={{y: height}}
             />
         </div>
