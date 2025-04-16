@@ -1,7 +1,7 @@
 /**
  * Created by ROVENSKIY D.A. on 03.04.2025
  */
-import {memo, useEffect, useRef, useState} from 'react';
+import {memo, useCallback, useEffect, useRef, useState} from 'react';
 import {Table} from 'antd';
 import {useQuery} from '@tanstack/react-query';
 import type {UserDummyJson, UserResponse} from './types.ts';
@@ -13,8 +13,10 @@ import API from '@libs/API.ts';
 import {NO_DATA} from '@libs/constants.ts';
 import type {PaginationParams} from '../../types.ts';
 import {useAtom} from 'jotai';
-import {atomUserList} from '../../atoms/atomUser.ts';
+import {atomUserListInSessionStorage} from '../../atoms/atomUser.ts';
 import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
+import type {TableProps} from 'antd';
+import {useNavigate} from 'react-router';
 
 const columns: ColumnsType<UserDummyJson> = [
     {
@@ -76,11 +78,18 @@ const columns: ColumnsType<UserDummyJson> = [
 
 export const userListPaginationParams: PaginationParams = {limit: 3, skip: 1};
 
+type onRowClickFunctionType = Required<
+    Pick<TableProps<UserDummyJson>, 'onRow'>
+>['onRow'];
+
 export const Component = memo(() => {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [userList, setUserList] = useAtom(atomUserList);
+    const [userListInSessionStorage, setUserListInSessionStorage] = useAtom(
+        atomUserListInSessionStorage,
+    );
+    const navigate = useNavigate();
 
-    const isUserListReceived = !!userList.length;
+    const isUserListReceived = !!userListInSessionStorage.length;
 
     const {data, isLoading} = useQuery<UserResponse>({
         enabled: !isUserListReceived,
@@ -99,9 +108,16 @@ export const Component = memo(() => {
 
     useEffect(() => {
         if (!isUserListReceived) {
-            setUserList(data?.users ?? []);
+            setUserListInSessionStorage(data?.users ?? []);
         }
     }, [data]);
+
+    const onClickOnRow = useCallback<onRowClickFunctionType>(
+        row => ({
+            onClick: () => navigate(`${row.id}`),
+        }),
+        [navigate],
+    );
 
     if (isLoading) return <LoadingIndicator />;
 
@@ -116,8 +132,9 @@ export const Component = memo(() => {
             <Table
                 rowKey="id"
                 columns={columns}
-                dataSource={userList}
+                dataSource={userListInSessionStorage}
                 scroll={{y: height}}
+                onRow={onClickOnRow}
             />
         </div>
     );

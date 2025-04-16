@@ -2,6 +2,7 @@
  * Created by ROVENSKIY D.A. on 04.03.2025
  */
 import type {PropsWithChildren} from 'react';
+import {useMemo} from 'react';
 import {memo} from 'react';
 import './styles.css';
 import {twMerge} from 'tailwind-merge';
@@ -9,7 +10,10 @@ import {twMerge} from 'tailwind-merge';
 const SpinningFrame = memo<
     PropsWithChildren<{className?: HTMLDivElement['className']}>
 >(({children, className}) => {
-    const styles = twMerge('spinning-frame', className);
+    const styles = useMemo(
+        () => twMerge('spinning-frame', className),
+        [className],
+    );
 
     return (
         <div className={styles}>

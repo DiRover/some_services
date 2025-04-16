@@ -10,11 +10,12 @@ import {useMutation, useQuery} from '@tanstack/react-query';
 import API from '../../libs/API.ts';
 import type {SelectProps} from 'antd';
 import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
-import {Link, useNavigate} from 'react-router';
+import {useNavigate} from 'react-router';
 import type {AxiosResponse} from 'axios';
 import axios from 'axios';
 import {useSetAtom} from 'jotai';
 import {atomUser} from '../../atoms/atomUser.ts';
+import ButtonBack from '@components/ButtonBack.tsx';
 
 const {Item} = Form;
 
@@ -74,17 +75,13 @@ export const Component = memo(() => {
     return (
         <div className="flex flex-col gap-y-8">
             <div className="flex justify-between">
-                <SpinningFrame className="inline-block">
-                    <Link to=".." className="text-fuchsia-500">
-                        &lt;- Back
-                    </Link>
-                </SpinningFrame>
+                <ButtonBack className="inline-block" />
 
                 <SpinningFrame className="inline-block">
                     <button
                         type="submit"
                         form="form-user"
-                        className="text-fuchsia-500"
+                        className="text-fuchsia-500 hover:cursor-pointer"
                         disabled={isPending}
                     >
                         Save

@@ -7,6 +7,7 @@ import prettierPlugin from 'eslint-plugin-prettier';
 import pluginQuery from '@tanstack/eslint-plugin-query';
 import tailwindPlugin from 'eslint-plugin-tailwindcss';
 import perfectionist from 'eslint-plugin-perfectionist';
+import reactHooks from 'eslint-plugin-react-hooks';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -21,6 +22,7 @@ export default [
     ...tsEslint.configs.recommended,
     pluginReact.configs.flat.recommended,
     eslintConfigPrettier,
+    reactHooks.configs['recommended-latest'],
     {
         plugins: {
             '@tanstack/query': pluginQuery,

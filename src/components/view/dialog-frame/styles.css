@@ -48,6 +48,7 @@
 
 .spinning-frame:hover i {
     opacity: 1;
+    cursor: pointer;
 }
 
 .spinning-frame i:before {

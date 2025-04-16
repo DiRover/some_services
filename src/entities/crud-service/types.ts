@@ -24,6 +24,7 @@ export interface UserDummyJson extends BaseDTO {
     email?: string;
     firstName: string;
     gender?: GENDER;
+    image?: string;
     lastName: string;
     maidenName?: string;
     phone: number;
