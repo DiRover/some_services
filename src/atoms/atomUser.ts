@@ -34,17 +34,25 @@ export const atomUser = atomFamily<string, Atom<UserDummyJson | undefined>>(
         }),
 );
 
-export const atomUserList = atom<null, UserDummyJson[], void>(
+export const atomUserList = atom<
     null,
-    (get, set, newUser) => {
-        const oldList = get(atomUserListInSessionStorage);
+    (UserDummyJson | string | number)[],
+    void
+>(null, (get, set, value) => {
+    const oldList = get(atomUserListInSessionStorage);
 
-        const exists = oldList.some(user => user.id === newUser.id);
+    let exists;
+    let updated;
 
-        const updated = exists
-            ? oldList.map(user => (user.id === newUser.id ? newUser : user))
-            : [...oldList, newUser];
+    if (typeof value === 'string' || typeof value === 'number') {
+        updated = oldList.filter(user => user.id !== value);
+    } else {
+        exists = oldList.some(user => user.id === value.id);
 
-        set(atomUserListInSessionStorage, updated);
-    },
-);
+        updated = exists
+            ? oldList.map(user => (user.id === value.id ? value : user))
+            : [...oldList, value];
+    }
+
+    set(atomUserListInSessionStorage, updated);
+});

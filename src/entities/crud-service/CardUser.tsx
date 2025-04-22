@@ -10,6 +10,7 @@ import {Image} from 'antd';
 import {ContextUser} from './ContextUser.ts';
 import {Link} from 'react-router';
 import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
+import DeleteUser from './DeleteUser.tsx';
 
 export const Component = memo(() => {
     const user = useContext(ContextUser);
@@ -24,6 +25,8 @@ export const Component = memo(() => {
                 <SpinningFrame>
                     <Link to="edit-user">Edit</Link>
                 </SpinningFrame>
+
+                <DeleteUser id={user.id} />
             </div>
 
             <div className="row-span-2 self-center justify-self-center">
