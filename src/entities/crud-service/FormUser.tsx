@@ -62,8 +62,9 @@ export const Component = memo(() => {
     });
 
     const onFinish = useCallback(
-        (value: UserDummyJson) => {
-            mutate(value);
+        (value: UserFormValue) => {
+            const {gender, ...rest} = value;
+            mutate({gender: gender || GENDER.OTHER, ...rest});
         },
         [mutate],
     );

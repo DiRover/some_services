@@ -22,11 +22,13 @@ export const Component = memo(() => {
             <div className="col-span-2 flex w-full justify-between">
                 <ButtonBack />
 
-                <SpinningFrame>
-                    <Link to="edit-user">Edit</Link>
-                </SpinningFrame>
+                <div className="flex">
+                    <SpinningFrame>
+                        <Link to="edit-user">Edit</Link>
+                    </SpinningFrame>
 
-                <DeleteUser id={user.id} />
+                    <DeleteUser id={user.id} />
+                </div>
             </div>
 
             <div className="row-span-2 self-center justify-self-center">

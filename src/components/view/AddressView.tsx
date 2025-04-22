@@ -18,7 +18,8 @@ export const AddressView = memo<{address?: Address; isInline?: boolean}>(
             [isInline],
         );
 
-        if (!address) return NO_DATA;
+        if (!address || (!address.city && !address.state && !address.stateCode))
+            return NO_DATA;
 
         const {city, state, stateCode} = address;
 

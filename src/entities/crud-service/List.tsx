@@ -17,6 +17,8 @@ import {atomUserListInSessionStorage} from '../../atoms/atomUser.ts';
 import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
 import type {TableProps} from 'antd';
 import {useNavigate} from 'react-router';
+import ViewTableRowData from './view/ViewTableRowData.tsx';
+import ButtonBack from '@components/ButtonBack.tsx';
 
 const columns: ColumnsType<UserDummyJson> = [
     {
@@ -26,7 +28,7 @@ const columns: ColumnsType<UserDummyJson> = [
     },
     {
         key: 'maidenName',
-        render: (_, record) => <>{record.maidenName || NO_DATA}</>,
+        render: (_, record) => <ViewTableRowData value={record.maidenName} />,
         title: 'Middle Name',
         width: '100px',
     },
@@ -36,7 +38,8 @@ const columns: ColumnsType<UserDummyJson> = [
         width: '100px',
     },
     {
-        dataIndex: 'birthDate',
+        key: 'birthDate',
+        render: (_, record) => <ViewTableRowData value={record.birthDate} />,
         title: 'Birth Date',
         width: '120px',
     },
@@ -50,7 +53,8 @@ const columns: ColumnsType<UserDummyJson> = [
         title: 'phone',
     },
     {
-        dataIndex: 'email',
+        key: 'email',
+        render: (_, record) => <ViewTableRowData value={record.email} />,
         title: 'email',
     },
     {
@@ -62,7 +66,7 @@ const columns: ColumnsType<UserDummyJson> = [
     {
         key: 'company',
         render: (_, {company}) =>
-            company ? (
+            company?.address && company.name ? (
                 <div className="flex flex-col gap-y-2">
                     <p>Name: {company.name}</p>
                     <p>Address:</p>
@@ -123,11 +127,15 @@ export const Component = memo(() => {
 
     return (
         <div ref={containerRef} className="h-full">
-            <SpinningFrame className="inline-block">
-                <Link to="form-user" className="text-fuchsia-500">
-                    Add new user
-                </Link>
-            </SpinningFrame>
+            <div className="flex justify-between">
+                <ButtonBack />
+
+                <SpinningFrame className="inline-block">
+                    <Link to="form-user" className="text-fuchsia-500">
+                        Add new user
+                    </Link>
+                </SpinningFrame>
+            </div>
 
             <Table
                 rowKey="id"
