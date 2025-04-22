@@ -8,6 +8,7 @@ export default class API {
     }
 
     public static users(): string;
+    public static users(id: string): string;
     public static users(command: 'add'): string;
     public static users(...commands: string[]) {
         const prefix = '/users';

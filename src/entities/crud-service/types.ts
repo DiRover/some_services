@@ -31,6 +31,11 @@ export interface UserDummyJson extends BaseDTO {
     role?: string;
 }
 
+export type UserFormValue = Omit<
+    UserDummyJson,
+    'id' | 'image' | 'age' | 'birthDate' | 'role' | 'address'
+>;
+
 export enum GENDER {
     MALE = 'male',
     FEMALE = 'female',

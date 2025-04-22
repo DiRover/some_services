@@ -107,10 +107,10 @@ export const Component = memo(() => {
     }, [data]);
 
     useEffect(() => {
-        if (!isUserListReceived) {
-            setUserListInSessionStorage(data?.users ?? []);
+        if (!isUserListReceived && data?.users.length) {
+            setUserListInSessionStorage(data.users);
         }
-    }, [data]);
+    }, [data, isUserListReceived, setUserListInSessionStorage]);
 
     const onClickOnRow = useCallback<onRowClickFunctionType>(
         row => ({

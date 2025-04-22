@@ -1,22 +1,31 @@
 /**
  * Created by ROVENSKIY D.A. on 14.04.2025
  */
-import {memo} from 'react';
-import {useLoaderData} from 'react-router';
-import type {UserDummyJson} from './types.ts';
+import {memo, useContext} from 'react';
 import ViewInfoLine from './view/ViewInfoLine.tsx';
 import {AddressView} from '@components/view/AddressView.tsx';
 import {UserOutlined} from '@ant-design/icons';
 import ButtonBack from '@components/ButtonBack.tsx';
 import {Image} from 'antd';
+import {ContextUser} from './ContextUser.ts';
+import {Link} from 'react-router';
+import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
 
 export const Component = memo(() => {
-    const {user} = useLoaderData<{user: UserDummyJson}>();
-    console.log(user);
+    const user = useContext(ContextUser);
+
+    if (!user) return null;
 
     return (
         <div className="grid w-2/3 grid-cols-[1fr_2fr] gap-y-4 rounded-2xl border p-8 text-fuchsia-500">
-            <ButtonBack className="col-span-2 justify-self-start" />
+            <div className="col-span-2 flex w-full justify-between">
+                <ButtonBack />
+
+                <SpinningFrame>
+                    <Link to="edit-user">Edit</Link>
+                </SpinningFrame>
+            </div>
+
             <div className="row-span-2 self-center justify-self-center">
                 {user.image ? (
                     <Image src={user.image} alt="user photo" />

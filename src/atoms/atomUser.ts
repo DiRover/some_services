@@ -1,6 +1,7 @@
+import type {Atom} from 'jotai';
 import {atom} from 'jotai';
 import type {UserDummyJson} from '../entities/crud-service/types.ts';
-import {atomWithStorage} from 'jotai/utils';
+import {atomFamily, atomWithStorage} from 'jotai/utils';
 
 export const keyUserListInSessionStorage = 'user-list';
 
@@ -25,17 +26,25 @@ export const atomUserListInSessionStorage = atomWithStorage<UserDummyJson[]>(
     },
 );
 
-export const atomUser = atom<null, UserDummyJson[], void>(
+export const atomUser = atomFamily<string, Atom<UserDummyJson | undefined>>(
+    id =>
+        atom(get => {
+            const list = get(atomUserListInSessionStorage);
+            return list.find(user => user.id == id);
+        }),
+);
+
+export const atomUserList = atom<null, UserDummyJson[], void>(
     null,
-    (get, set, newValue) => {
-        const oldValue = get(atomUserListInSessionStorage);
+    (get, set, newUser) => {
+        const oldList = get(atomUserListInSessionStorage);
 
-        const exists = oldValue.some(user => user.id === newValue.id);
+        const exists = oldList.some(user => user.id === newUser.id);
 
-        const currentValue = exists
-            ? oldValue.filter(user => user.id !== newValue.id)
-            : [...oldValue, newValue];
+        const updated = exists
+            ? oldList.map(user => (user.id === newUser.id ? newUser : user))
+            : [...oldList, newUser];
 
-        set(atomUserListInSessionStorage, currentValue);
+        set(atomUserListInSessionStorage, updated);
     },
 );

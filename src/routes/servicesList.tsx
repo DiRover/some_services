@@ -2,7 +2,6 @@
  * Created by ROVENSKIY D.A. on 20.03.2025
  */
 import type {RouteObject} from 'react-router';
-import {loaderUser} from '../entities/crud-service/loader.ts';
 
 export const servicesList: RouteObject[] = [
     {
@@ -16,8 +15,19 @@ export const servicesList: RouteObject[] = [
                 path: 'form-user',
             },
             {
-                lazy: () => import('../entities/crud-service/UserPage.tsx'),
-                loader: loaderUser(),
+                children: [
+                    {
+                        index: true,
+                        lazy: () =>
+                            import('../entities/crud-service/CardUser.tsx'),
+                    },
+                    {
+                        lazy: () =>
+                            import('../entities/crud-service/FormUser.tsx'),
+                        path: 'edit-user',
+                    },
+                ],
+                lazy: () => import('../entities/crud-service/PageUser.tsx'),
                 path: ':id',
             },
         ],
