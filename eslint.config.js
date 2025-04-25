@@ -34,6 +34,10 @@ export default [
         rules: {
             '@tanstack/query/exhaustive-deps': 'error',
             '@typescript-eslint/consistent-type-imports': 'error',
+            '@typescript-eslint/no-unused-vars': [
+                2,
+                {argsIgnorePattern: '^_', ignoreRestSiblings: true},
+            ],
             'no-console': 'error',
             'no-undef': 'error',
             'perfectionist/sort-interfaces': ['error'],

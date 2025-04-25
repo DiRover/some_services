@@ -56,7 +56,8 @@ export const Component = memo(() => {
             }
         },
         onSuccess: data => {
-            setUserInList(data.data);
+            const {id: _, ...rest} = data.data;
+            setUserInList({...rest, id: Date.now().toString()});
             navigate('/crud');
         },
     });
@@ -79,12 +80,11 @@ export const Component = memo(() => {
                 initialValues={initialValues}
             >
                 <div className="flex justify-between !text-xl">
-                    <ButtonBack />
+                    <ButtonBack to={user?.id ? `/crud/${user.id}` : '/crud'} />
 
                     <SpinningFrame>
                         <button
                             type="submit"
-                            form="form-user"
                             className="text-fuchsia-500 hover:cursor-pointer"
                             disabled={isPending}
                         >

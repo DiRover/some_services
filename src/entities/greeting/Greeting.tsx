@@ -18,7 +18,7 @@ export const Component = memo(() => {
             </div>
 
             <SpinningFrame className="self-end">
-                <Link to="services-list">Go -&gt;</Link>
+                <Link to="/services-list">Go -&gt;</Link>
             </SpinningFrame>
         </div>
     );

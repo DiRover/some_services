@@ -20,11 +20,13 @@ export const Component = memo(() => {
     return (
         <div className="grid w-2/3 grid-cols-[1fr_2fr] gap-y-4 rounded-2xl border p-8 text-fuchsia-500">
             <div className="col-span-2 flex w-full justify-between">
-                <ButtonBack />
+                <ButtonBack to="/crud" />
 
                 <div className="flex">
                     <SpinningFrame>
-                        <Link to="edit-user">Edit</Link>
+                        <Link to={`/crud/${user.id}/edit-user`} replace>
+                            Edit
+                        </Link>
                     </SpinningFrame>
 
                     <DeleteUser id={user.id} />
