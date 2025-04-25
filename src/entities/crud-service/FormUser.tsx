@@ -52,12 +52,12 @@ export const Component = memo(() => {
                     id: user.id,
                 };
                 setUserInList(newValue);
-                navigate('..');
+                navigate('/crud');
             }
         },
         onSuccess: data => {
             setUserInList(data.data);
-            navigate('..');
+            navigate('/crud');
         },
     });
 
@@ -71,21 +71,6 @@ export const Component = memo(() => {
 
     return (
         <div className="flex flex-col gap-y-8">
-            <div className="flex justify-between">
-                <ButtonBack className="inline-block" />
-
-                <SpinningFrame className="inline-block">
-                    <button
-                        type="submit"
-                        form="form-user"
-                        className="text-fuchsia-500 hover:cursor-pointer"
-                        disabled={isPending}
-                    >
-                        Save
-                    </button>
-                </SpinningFrame>
-            </div>
-
             <Form
                 name="form-user"
                 layout="vertical"
@@ -93,6 +78,21 @@ export const Component = memo(() => {
                 onFinish={onFinish}
                 initialValues={initialValues}
             >
+                <div className="flex justify-between !text-xl">
+                    <ButtonBack />
+
+                    <SpinningFrame>
+                        <button
+                            type="submit"
+                            form="form-user"
+                            className="text-fuchsia-500 hover:cursor-pointer"
+                            disabled={isPending}
+                        >
+                            Save
+                        </button>
+                    </SpinningFrame>
+                </div>
+
                 <div className="grid grid-cols-3 gap-x-8">
                     <Item
                         label="First Name"

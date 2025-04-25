@@ -8,7 +8,7 @@ import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
 const ButtonBack = memo<{className?: HTMLDivElement['className']}>(props => {
     return (
         <SpinningFrame {...props}>
-            <Link to=".." className="text-fuchsia-500">
+            <Link to=".." className="!text-fuchsia-500">
                 &lt;- Back
             </Link>
         </SpinningFrame>
