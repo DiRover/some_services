@@ -15,7 +15,7 @@
     --border-bg: conic-gradient(from 180deg at 50% 50%,#e92a67 0deg,#a853ba 112.5deg,#2a8af6 228.75deg,rgba(42,138,246,0) 360deg);
     position: relative;
     overflow: hidden;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: var(--color-midnight);
     border-radius: 12px;
     opacity: 0.5;

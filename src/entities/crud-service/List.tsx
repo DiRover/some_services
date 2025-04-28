@@ -131,7 +131,7 @@ export const Component = memo(() => {
                 <ButtonBack to="/services-list" />
 
                 <SpinningFrame className="inline-block">
-                    <Link to="/crud/form-user" className="text-fuchsia-500">
+                    <Link to="form-user" className="text-fuchsia-500">
                         Add new user
                     </Link>
                 </SpinningFrame>

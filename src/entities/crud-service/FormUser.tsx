@@ -52,13 +52,13 @@ export const Component = memo(() => {
                     id: user.id,
                 };
                 setUserInList(newValue);
-                navigate('/crud');
+                navigate('..');
             }
         },
         onSuccess: data => {
             const {id: _, ...rest} = data.data;
             setUserInList({...rest, id: Date.now().toString()});
-            navigate('/crud');
+            navigate('..');
         },
     });
 

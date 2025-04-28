@@ -23,7 +23,7 @@ const DeleteUser = memo<DeleteUserProps>(({id}) => {
 
     const commonFunction = useCallback(() => {
         deleteUserFromList(id);
-        navigate('../../../crud');
+        navigate('..');
     }, [deleteUserFromList, id, navigate]);
 
     const {mutate} = useMutation({
