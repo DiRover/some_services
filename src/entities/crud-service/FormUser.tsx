@@ -56,8 +56,13 @@ export const Component = memo(() => {
             }
         },
         onSuccess: data => {
-            const {id: _, ...rest} = data.data;
-            setUserInList({...rest, id: Date.now().toString()});
+            if (user) {
+                setUserInList(data.data);
+            } else {
+                const {id: _, ...rest} = data.data;
+                setUserInList({...rest, id: Date.now().toString()});
+            }
+
             navigate('..');
         },
     });
