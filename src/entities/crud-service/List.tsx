@@ -105,7 +105,7 @@ export const Component = memo(() => {
     useEffect(() => {
         if (containerRef.current) {
             setHeight(
-                containerRef.current?.getBoundingClientRect().height - 150,
+                containerRef.current?.getBoundingClientRect().height - 175,
             );
         }
     }, [data]);

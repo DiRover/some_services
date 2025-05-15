@@ -2,12 +2,13 @@ import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
+import svgr from 'vite-plugin-svgr';
 
 const mockApiURL = '/unknown-first';
 const dummyJson = '/dummyJson';
 
 export default defineConfig({
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), svgr()],
     server: {
         port: 9080,
         proxy: {
@@ -27,6 +28,7 @@ export default defineConfig({
     resolve: {
         alias: {
             '@': path.resolve(__dirname, './src'),
+            '@assets': path.resolve(__dirname, './src/assets'),
             '@components': path.resolve(__dirname, './src/components'),
             '@libs': path.resolve(__dirname, './src/libs'),
         },
