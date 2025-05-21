@@ -90,7 +90,7 @@ export const Component = memo(() => {
                     <SpinningFrame>
                         <button
                             type="submit"
-                            className="text-fuchsia-500 hover:cursor-pointer"
+                            className="text-everywhere-color hover:cursor-pointer"
                             disabled={isPending}
                         >
                             Save

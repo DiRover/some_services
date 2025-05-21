@@ -23,7 +23,7 @@ const ViewInfoLine = memo<ViewInfoLineProps>(
 
         return (
             <div
-                className={`${isLastLine ? 'border-b border-fuchsia-500' : ''}`}
+                className={`${isLastLine ? 'border-everywhere-color border-b' : ''}`}
             >
                 <p>{title}:</p>
                 <p>{currentValue}</p>

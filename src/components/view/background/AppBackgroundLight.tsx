@@ -4,9 +4,10 @@
 import type {PropsWithChildren} from 'react';
 import {memo, useEffect, useRef} from 'react';
 import * as THREE from 'three';
+import {getStars, points} from './backgroundElements';
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color('#1b022c');
+scene.background = new THREE.Color('#ffffff');
 const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -17,19 +18,9 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const starGeometry = new THREE.BufferGeometry();
-const starMaterial = new THREE.PointsMaterial({color: 0xffffff});
+const starMaterial = new THREE.PointsMaterial({color: 0x000000});
 
-const stars = [];
-for (let i = 0; i < 6000; i++) {
-    const star = new THREE.Vector3(
-        (Math.random() - 0.5) * 2000,
-        (Math.random() - 0.5) * 2000,
-        Math.random() * -2000,
-    );
-    stars.push(star.x, star.y, star.z);
-}
-
-const starVertices = new Float32Array(stars);
+const starVertices = new Float32Array(getStars());
 starGeometry.setAttribute(
     'position',
     new THREE.BufferAttribute(starVertices, 3),
@@ -43,23 +34,7 @@ camera.position.z = 5;
 camera.position.set(0, 0, 100);
 camera.lookAt(0, 0, 0);
 
-const material = new THREE.LineBasicMaterial({color: 0x0000ff});
-
-const points = [];
-points.push(new THREE.Vector3(-20, 20, 0));
-points.push(new THREE.Vector3(0, 60, 0));
-points.push(new THREE.Vector3(20, 20, 0));
-points.push(new THREE.Vector3(0, -60, 0));
-points.push(new THREE.Vector3(-20, 20, 0));
-points.push(new THREE.Vector3(0, 20, 20));
-points.push(new THREE.Vector3(20, 20, 0));
-points.push(new THREE.Vector3(0, 20, -20));
-points.push(new THREE.Vector3(-20, 20, 0));
-points.push(new THREE.Vector3(0, 60, 0));
-points.push(new THREE.Vector3(0, 20, -20));
-points.push(new THREE.Vector3(0, -60, 0));
-points.push(new THREE.Vector3(0, 20, 20));
-points.push(new THREE.Vector3(0, 60, 0));
+const material = new THREE.LineBasicMaterial({color: 0x000000});
 
 const geometry = new THREE.BufferGeometry().setFromPoints(points);
 

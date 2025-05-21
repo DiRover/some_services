@@ -18,7 +18,7 @@ export const Component = memo(() => {
     if (!user) return null;
 
     return (
-        <div className="grid w-2/3 grid-cols-[1fr_2fr] gap-y-4 rounded-2xl border p-8 text-fuchsia-500">
+        <div className="text-everywhere-color grid w-2/3 grid-cols-[1fr_2fr] gap-y-4 rounded-2xl border p-8">
             <div className="col-span-2 flex w-full justify-between">
                 <ButtonBack to="/crud" />
 
@@ -44,7 +44,7 @@ export const Component = memo(() => {
             <div className="flex flex-col">
                 <h2 className="self-center text-xl">Personal info</h2>
 
-                <div className="grid divide-y divide-fuchsia-500">
+                <div className="divide-everywhere-color grid divide-y">
                     <ViewInfoLine title="First name" value={user.firstName} />
 
                     <ViewInfoLine title="Middle name" value={user.maidenName} />
@@ -60,7 +60,7 @@ export const Component = memo(() => {
             <div className="flex flex-col">
                 <h2 className="self-center text-xl">Contact info</h2>
 
-                <div className="grid divide-y divide-fuchsia-500">
+                <div className="divide-everywhere-color grid divide-y">
                     <ViewInfoLine title="Phone" value={user.phone} />
 
                     <ViewInfoLine title="Email" value={user.email} isLastLine />
@@ -70,7 +70,7 @@ export const Component = memo(() => {
             <div className="col-span-2 flex flex-col">
                 <h2 className="self-center text-xl">Job info</h2>
 
-                <div className="grid divide-y divide-fuchsia-500">
+                <div className="divide-everywhere-color grid divide-y">
                     <ViewInfoLine
                         title="Company name"
                         value={user.company?.name}

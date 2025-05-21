@@ -11,7 +11,7 @@ const ButtonBack = memo<{className?: HTMLDivElement['className']; to?: string}>(
 
         return (
             <SpinningFrame {...props}>
-                <Link to={direction} className="!text-fuchsia-500">
+                <Link to={direction} className="!text-everywhere-color">
                     &lt;- Back
                 </Link>
             </SpinningFrame>

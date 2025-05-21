@@ -12,13 +12,13 @@ const ServiceView = memo<{service: Service}>(({service}) => {
 
     const onClick = useCallback(() => {
         navigate(`../${link}`);
-    }, []);
+    }, [link, navigate]);
 
     return (
         <SpinningFrame className="!p-0">
             <div
                 onClick={onClick}
-                className="dialog flex h-full w-full flex-col gap-4 border"
+                className="dialog flex h-full w-full flex-col gap-4 border hover:border-0"
             >
                 <h2>{title}</h2>
                 <p>{description}</p>

@@ -1,3 +1,5 @@
+@import 'tailwindcss';
+
 @keyframes spinning-background {
     0% {
         transform: translate(-50%,-50%) rotate(1turn)
@@ -8,17 +10,17 @@
     }
 }
 
+
+
 .spinning-frame {
     --border-radius: 12px;
     --border-size: 1px;
     --padding: 1px;
-    --border-bg: conic-gradient(from 180deg at 50% 50%,#e92a67 0deg,#a853ba 112.5deg,#2a8af6 228.75deg,rgba(42,138,246,0) 360deg);
+    /*--border-bg: conic-gradient(from 180deg at 50% 50%,#e92a67 0deg,#a853ba 112.5deg,#2a8af6 228.75deg,rgba(42,138,246,0) 360deg);*/
     position: relative;
     overflow: hidden;
-    padding: 0.5rem;
-    background-color: var(--color-midnight);
+    @apply p-2;
     border-radius: 12px;
-    opacity: 0.5;
 
     /*font-size: 2rem;*/
     /*padding: calc(var(--padding) + var(--border-size));*/
@@ -54,7 +56,7 @@
 .spinning-frame i:before {
     content: "";
     display: block;
-    background: var(--border-bg);
+    background: var(--bg-super);
     /*box-shadow: 0 0 40px 20px var(--border-bg);*/
     width: calc(100% * 1.41421356237);
     padding-bottom: calc(100% * 1.41421356237);

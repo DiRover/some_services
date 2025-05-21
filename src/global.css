@@ -6,16 +6,53 @@ html, body, #root {
     height: 100%;
 }
 
-@theme {
-    --color-midnight: #121063;
+:root {
+    --bg-super: conic-gradient(
+            from 180deg at 50% 50%,
+            #ffffff 0deg,
+            #bbbbbb 112.5deg,
+            #888888 228.75deg,
+            rgba(0, 0, 0, 0) 360deg
+    );
 }
 
+@theme {
+    --color-everywhere-color: var(--color-fuchsia-500);
+    --color-header-bg: #2681bd;
+    --color-boreder-line: #040000;
+
+}
+
+.dark {
+    --color-everywhere-color: #26bd15;
+    --color-header-bg: #bd264e;
+    --color-boreder-line: var(--color-amber-50);
+    --bg-super: conic-gradient(
+            from 180deg at 50% 50%,
+            #e92a67 0deg,
+            #a853ba 112.5deg,
+            #2a8af6 228.75deg,
+            rgba(42,138,246,0) 360deg
+    );
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @utility dialog {
-    @apply rounded-xl border-2 p-8 text-fuchsia-500
+    @apply rounded-xl border-2 p-8 text-everywhere-color
 }
 
 .ant-table, .ant-table-cell {
     @apply !bg-transparent;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th,
+.ant-table-wrapper .ant-table-tbody > tr > td {
+    border-bottom: var(--color-boreder-line) solid 1px;
+}
+
+.ant-table-thead .ant-table-cell::before {
+    background-color: var(--color-boreder-line) !important;
 }
 
 .ant-table-thead .ant-table-cell,
@@ -24,7 +61,7 @@ html, body, #root {
 .ant-table, .ant-table-cell,
 .ant-input, .ant-select-selector,
 .ant-select-arrow, .ant-form-item-label > label {
-    @apply !text-fuchsia-500;
+    @apply !text-everywhere-color;
 }
 
 .ant-form-item-label > label {
@@ -34,7 +71,7 @@ html, body, #root {
 .ant-pagination-disabled .ant-pagination-item-link,
 .ant-radio-button-wrapper:hover,
 .ant-radio-button-checked .ant-radio-button-label {
-    @apply !text-amber-50;
+    @apply !text-everywhere-color;
 }
 
 .ant-pagination-item {
@@ -44,22 +81,22 @@ html, body, #root {
 .ant-pagination-item-active,
 .ant-input-group-addon,
 .ant-radio-button-wrapper:first-child:not(.ant-radio-button-wrapper-checked) {
-    @apply !border-fuchsia-500;
+    @apply !border-everywhere-color;
 }
 
 .ant-input, .ant-select-selector, .ant-radio-button-wrapper-block {
-    @apply !bg-transparent !h-12 !text-2xl border-fuchsia-500;
+    @apply !bg-transparent !h-12 !text-2xl border-everywhere-color;
 }
 
 .ant-select-selector-custom .ant-select-selector {
-    @apply !border-fuchsia-500;
+    @apply !border-everywhere-color;
 }
 
 .ant-input-outlined:focus-within,
 .ant-input-outlined:hover,
 .ant-select-selector-custom .ant-select-selector:hover,
 .ant-radio-button-wrapper-checked, .ant-radio-button-checked {
-    @apply !border-amber-50;
+    @apply !border-boreder-line;
 }
 
 .ant-select-arrow {
@@ -67,17 +104,17 @@ html, body, #root {
 }
 
 .ant-radio-button-wrapper:not(:first-child)::before {
-    @apply bg-fuchsia-500;
+    @apply bg-everywhere-color;
 }
 
 .ant-radio-button-wrapper {
-    @apply text-fuchsia-500;
+    @apply text-everywhere-color;
 }
 
 .ant-radio-button-wrapper-checked .ant-radio-button-label {
-    @apply !text-amber-50;
+    @apply !text-boreder-line;
 }
 
 .ant-radio-button-wrapper-checked:not(:first-child)::before {
-    @apply !bg-amber-50;
+    @apply !bg-boreder-line;
 }
