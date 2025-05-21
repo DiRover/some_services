@@ -1,5 +1,7 @@
+import type {ReactNode} from 'react';
+
 export interface Service {
-    description: string;
-    link: string;
+    description: ReactNode;
+    link?: string;
     title: string;
 }

@@ -8,12 +8,17 @@ import './styles.css';
 import {twMerge} from 'tailwind-merge';
 
 const SpinningFrame = memo<
-    PropsWithChildren<{className?: HTMLDivElement['className']}>
->(({children, className}) => {
+    PropsWithChildren<{
+        className?: HTMLDivElement['className'];
+        showFrame?: boolean;
+    }>
+>(({children, className, showFrame = true}) => {
     const styles = useMemo(
         () => twMerge('spinning-frame', className),
         [className],
     );
+
+    if (!showFrame) return <>{children}</>;
 
     return (
         <div className={styles}>
