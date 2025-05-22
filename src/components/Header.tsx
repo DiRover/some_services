@@ -31,7 +31,7 @@ const Header = memo(() => {
     return (
         <div className="bg-header-bg flex justify-end p-4">
             <div className="flex gap-x-4">
-                <Link to="https://github.com/">
+                <Link to="https://github.com/DiRover/some_services">
                     <Github className="size-full" />
                 </Link>
 
