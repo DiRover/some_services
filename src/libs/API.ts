@@ -1,6 +1,9 @@
 export default class API {
     private static prefixMockApiURL = import.meta.env.MOCK_API_URL;
-    private static prefixDummyApiURL = import.meta.env.DUMMY_API_URL;
+    private static prefixDummyApiURL =
+        import.meta.env.MODE === 'production'
+            ? 'https://dummyjson.com'
+            : import.meta.env.DUMMY_API_URL;
 
     protected static joinCommands(...commands: string[]): string {
         const suffix = commands.join('/');
