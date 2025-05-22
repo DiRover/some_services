@@ -34,7 +34,11 @@ export default defineConfig({
         },
     },
     define: {
-        'import.meta.env.MOCK_API_URL': JSON.stringify(mockApiURL),
-        'import.meta.env.DUMMY_API_URL': JSON.stringify(dummyJson),
+        'import.meta.env.MOCK_API_URL': JSON.stringify(
+            process.env.VITE_MOCK_API_URL,
+        ),
+        'import.meta.env.DUMMY_API_URL': JSON.stringify(
+            process.env.VITE_DUMMY_API_URL,
+        ),
     },
 });
