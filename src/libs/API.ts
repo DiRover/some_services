@@ -4,8 +4,10 @@ export default class API {
         import.meta.env.MODE === 'production'
             ? 'https://dummyjson.com'
             : import.meta.env.VITE_DUMMY_API_URL;
-    private static prefixOpenRouterApiURL = import.meta.env
-        .VITE_OPENROUTER_API_URL;
+    private static prefixOpenRouterApiURL =
+        import.meta.env.MODE === 'production'
+            ? 'https://openrouter.ai'
+            : import.meta.env.VITE_OPENROUTER_API_URL;
 
     protected static joinCommands(...commands: string[]): string {
         const suffix = commands.join('/');
