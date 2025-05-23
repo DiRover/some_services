@@ -18,6 +18,7 @@ html, body, #root {
 
 @theme {
     --color-everywhere-color: var(--color-fuchsia-500);
+    --color-chatAI-color: #26bd15;
     --color-header-bg: #2681bd;
     --color-boreder-line: #040000;
 
@@ -25,6 +26,7 @@ html, body, #root {
 
 .dark {
     --color-everywhere-color: #26bd15;
+    --color-chatAI-color: var(--color-fuchsia-500);
     --color-header-bg: #bd264e;
     --color-boreder-line: var(--color-amber-50);
     --bg-super: conic-gradient(
@@ -117,4 +119,9 @@ html, body, #root {
 
 .ant-radio-button-wrapper-checked:not(:first-child)::before {
     @apply !bg-boreder-line;
+}
+
+textarea.ant-input::placeholder {
+    @apply text-everywhere-color;
+    opacity: 0.5;
 }

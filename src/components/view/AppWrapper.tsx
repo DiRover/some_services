@@ -6,7 +6,9 @@ import {memo} from 'react';
 
 const AppWrapper = memo<PropsWithChildren>(({children}) => {
     return (
-        <div className="flex items-center justify-center p-8">{children}</div>
+        <div className="flex h-full w-full justify-center overflow-y-hidden p-8">
+            {children}
+        </div>
     );
 });
 

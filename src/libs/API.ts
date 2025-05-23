@@ -1,9 +1,11 @@
 export default class API {
-    private static prefixMockApiURL = import.meta.env.MOCK_API_URL;
+    private static prefixMockApiURL = import.meta.env.VITE_MOCK_API_URL;
     private static prefixDummyApiURL =
         import.meta.env.MODE === 'production'
             ? 'https://dummyjson.com'
-            : import.meta.env.DUMMY_API_URL;
+            : import.meta.env.VITE_DUMMY_API_URL;
+    private static prefixOpenRouterApiURL = import.meta.env
+        .VITE_OPENROUTER_API_URL;
 
     protected static joinCommands(...commands: string[]): string {
         const suffix = commands.join('/');
@@ -16,6 +18,10 @@ export default class API {
     public static users(...commands: string[]) {
         const prefix = '/users';
         return `${this.prefixDummyApiURL}${prefix}${this.joinCommands(...commands)}`;
+    }
+
+    public static chatAI(): string {
+        return `${this.prefixOpenRouterApiURL}/api/v1/chat/completions`;
     }
 
     public static jobs(): string {

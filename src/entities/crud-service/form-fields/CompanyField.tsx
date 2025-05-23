@@ -16,7 +16,7 @@ const CompanyField = memo(() => {
 
             <p className="text-everywhere-color text-2xl">Company address</p>
 
-            <div className="flex gap-x-4">
+            <div className="grid grid-cols-3 gap-x-8">
                 <Item label="State" name={['company', 'address', 'state']}>
                     <Input placeholder="State" />
                 </Item>

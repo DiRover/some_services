@@ -76,7 +76,7 @@ export const Component = memo(() => {
     );
 
     return (
-        <div className="flex flex-col gap-y-8">
+        <div className="flex flex-col gap-y-8 place-self-center">
             <Form
                 name="form-user"
                 layout="vertical"
