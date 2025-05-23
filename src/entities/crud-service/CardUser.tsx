@@ -18,7 +18,7 @@ export const Component = memo(() => {
     if (!user) return null;
 
     return (
-        <div className="text-everywhere-color grid w-2/3 grid-cols-[1fr_2fr] gap-y-4 rounded-2xl border p-8">
+        <div className="text-everywhere-color grid w-2/3 grid-cols-[1fr_2fr] gap-y-4 place-self-center rounded-2xl border p-8">
             <div className="col-span-2 flex w-full justify-between">
                 <ButtonBack to="/crud" />
 

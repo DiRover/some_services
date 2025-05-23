@@ -6,6 +6,7 @@ import svgr from 'vite-plugin-svgr';
 
 const mockApiURL = '/unknown-first';
 const dummyJson = '/dummyJson';
+const openRouterProxy = '/openRouter';
 
 export default defineConfig({
     plugins: [react(), tailwindcss(), svgr()],
@@ -23,6 +24,12 @@ export default defineConfig({
                 secure: true,
                 rewrite: path => path.replace(new RegExp(`^${dummyJson}`), ''),
             },
+            [openRouterProxy]: {
+                target: 'https://openrouter.ai',
+                changeOrigin: true,
+                secure: true,
+                rewrite: path => path.replace(/^\/openRouter/, ''),
+            },
         },
     },
     resolve: {
@@ -31,14 +38,7 @@ export default defineConfig({
             '@assets': path.resolve(__dirname, './src/assets'),
             '@components': path.resolve(__dirname, './src/components'),
             '@libs': path.resolve(__dirname, './src/libs'),
+            '@hooks': path.resolve(__dirname, './src/hooks'),
         },
-    },
-    define: {
-        'import.meta.env.MOCK_API_URL': JSON.stringify(
-            process.env.VITE_MOCK_API_URL,
-        ),
-        'import.meta.env.DUMMY_API_URL': JSON.stringify(
-            process.env.VITE_DUMMY_API_URL,
-        ),
     },
 });

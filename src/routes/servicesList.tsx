@@ -34,4 +34,10 @@ export const servicesList: RouteObject[] = [
         lazy: () => import('../entities/crud-service/Page.tsx'),
         path: 'crud',
     },
+    {
+        children: [
+            {index: true, lazy: () => import('../entities/chat/Page.tsx')},
+        ],
+        path: 'chat',
+    },
 ];

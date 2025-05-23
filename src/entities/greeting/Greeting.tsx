@@ -8,7 +8,7 @@ import SpinningFrame from '@components/view/dialog-frame/SpinningFrame.tsx';
 
 export const Component = memo(() => {
     return (
-        <div className="dialog box-content flex h-1/2 w-1/3 flex-col justify-between">
+        <div className="dialog box-content flex h-1/2 w-1/3 flex-col justify-between place-self-center">
             <div className="flex flex-col gap-y-4">
                 <h1>Welcome to my portfolio page!</h1>
 

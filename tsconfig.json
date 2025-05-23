@@ -23,6 +23,7 @@
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
       "@libs/*": ["src/libs/*"],
+      "@hooks/*": ["src/hooks/*"],
     }
   },
   "include": ["src/**/*"]

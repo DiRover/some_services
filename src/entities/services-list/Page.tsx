@@ -7,9 +7,12 @@ import ServiceView from './ServiceView.tsx';
 
 export const Component = memo(() => {
     return (
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-4 place-self-center">
             {servicesList.map(service => (
-                <ServiceView service={service} key={service.link} />
+                <ServiceView
+                    service={service}
+                    key={service.link || service.title}
+                />
             ))}
         </div>
     );
