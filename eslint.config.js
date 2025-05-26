@@ -11,12 +11,13 @@ import reactHooks from 'eslint-plugin-react-hooks';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-    {files: ['**/*.{ts,tsx}']},
     {
-        languageOptions: {
-            ecmaVersion: 'latest',
-            globals: globals.browser,
-        },
+        ignores: [
+            'vite.config.ts',
+            'global.css',
+            '**/node_modules/**',
+            '**/dist/**',
+        ],
     },
     pluginJs.configs.recommended,
     ...tsEslint.configs.recommended,
@@ -24,6 +25,14 @@ export default [
     eslintConfigPrettier,
     reactHooks.configs['recommended-latest'],
     {
+        files: ['**/*.{ts,tsx}'],
+        languageOptions: {
+            ecmaVersion: 'latest',
+            globals: globals.browser,
+            parserOptions: {
+                project: './tsconfig.json',
+            },
+        },
         plugins: {
             '@tanstack/query': pluginQuery,
             perfectionist,
@@ -34,6 +43,7 @@ export default [
         rules: {
             '@tanstack/query/exhaustive-deps': 'error',
             '@typescript-eslint/consistent-type-imports': 'error',
+            '@typescript-eslint/no-deprecated': 'error',
             '@typescript-eslint/no-unused-vars': [
                 2,
                 {argsIgnorePattern: '^_', ignoreRestSiblings: true},
@@ -60,5 +70,4 @@ export default [
             },
         },
     },
-    {ignores: ['vite.config.ts', 'global.css']},
 ];

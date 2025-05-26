@@ -16,6 +16,14 @@ export interface UserFromMockApi extends BaseDTO {
     vehicleType: string;
 }
 
+export const GENDER = {
+    FEMALE: 'female',
+    MALE: 'male',
+    OTHER: 'other',
+} as const;
+
+type GENDER_NAME = keyof typeof GENDER;
+
 export interface UserDummyJson extends BaseDTO {
     address: Address;
     age?: number;
@@ -23,7 +31,7 @@ export interface UserDummyJson extends BaseDTO {
     company?: Company;
     email?: string;
     firstName: string;
-    gender: GENDER;
+    gender: GENDER_NAME;
     image?: string;
     lastName: string;
     maidenName?: string;
@@ -35,12 +43,6 @@ export type UserFormValue = Omit<
     UserDummyJson,
     'id' | 'image' | 'age' | 'birthDate' | 'role' | 'address'
 >;
-
-export enum GENDER {
-    MALE = 'male',
-    FEMALE = 'female',
-    OTHER = 'other',
-}
 
 export interface Company extends BaseDTO {
     address: Address;

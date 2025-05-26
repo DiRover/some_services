@@ -9,6 +9,7 @@
     "noImplicitReturns": false,
     "module": "ESNext",
     "noEmit": true,
+    "composite": true,
     "noEmitOnError": true,
     "strictNullChecks": true,
     "isolatedModules": true,
